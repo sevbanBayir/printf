@@ -1,4 +1,16 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbayir <sbayir@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/18 16:55:21 by sbayir            #+#    #+#             */
+/*   Updated: 2023/01/18 20:06:42 by sbayir           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/ft_printf.h"
 
 int	ft_printchar(int c)
 {
@@ -12,19 +24,19 @@ int	ft_formats(va_list args, const char format)
 
 	print_length = 0;
 	if (format == 'c')
-		print_length += ft_printchar(va_arg(args, int));
+		print_length = ft_printchar(va_arg(args, int));
 	else if (format == 's')
-		print_length += ft_printstr(va_arg(args, char *));
+		print_length = ft_printstr(va_arg(args, char *));
 	else if (format == 'p')
-		print_length += ft_print_ptr(va_arg(args, unsigned long long));
+		print_length = ft_print_ptr(va_arg(args, unsigned long long));
 	else if (format == 'd' || format == 'i')
-		print_length += ft_printnbr(va_arg(args, int));
+		print_length = ft_printnbr(va_arg(args, int));
 	else if (format == 'u')
-		print_length += ft_print_unsigned(va_arg(args, unsigned int));
+		print_length = ft_print_ui(va_arg(args, unsigned int));
 	else if (format == 'x' || format == 'X')
-		print_length += ft_print_hex(va_arg(args, unsigned int), format);
+		print_length = ft_print_hex(va_arg(args, unsigned int), format);
 	else if (format == '%')
-		print_length += ft_printpercent();
+		print_length = ft_printpercent();
 	return (print_length);
 }
 

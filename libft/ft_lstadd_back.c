@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbayir <sbayir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 19:05:38 by mcakay            #+#    #+#             */
-/*   Updated: 2022/07/01 09:00:53 by mcakay           ###   ########.fr       */
+/*   Created: 2022/12/20 00:27:30 by sbayir            #+#    #+#             */
+/*   Updated: 2022/12/20 00:28:23 by sbayir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (!new || !lst)
+	t_list	*add_backlist;
+
+	if (!lst || !new)
 		return ;
-	if (!*lst)
-		*lst = new;
-	else
+	if (!(*lst))
 	{
-		ft_lstlast(*lst)->next = new;
+		*lst = new;
+		return ;
 	}
+	add_backlist = ft_lstlast(*lst);
+	add_backlist->next = new;
 }

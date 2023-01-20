@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbayir <sbayir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 18:09:18 by mcakay            #+#    #+#             */
-/*   Updated: 2022/07/01 02:10:31 by mcakay           ###   ########.fr       */
+/*   Created: 2022/12/20 00:34:11 by sbayir            #+#    #+#             */
+/*   Updated: 2022/12/20 02:12:37 by sbayir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int	i;
+	t_list	*ptr;
+	int		i;
 
+	ptr = lst;
+	if (!ptr)
+		return (0);
 	i = 0;
 	while (lst)
 	{
-		lst = lst->next;
 		i++;
+		lst = lst->next;
 	}
 	return (i);
 }

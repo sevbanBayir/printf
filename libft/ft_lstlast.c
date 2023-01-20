@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbayir <sbayir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 18:58:05 by mcakay            #+#    #+#             */
-/*   Updated: 2022/07/01 02:13:36 by mcakay           ###   ########.fr       */
+/*   Created: 2022/12/20 00:31:26 by sbayir            #+#    #+#             */
+/*   Updated: 2022/12/20 00:31:56 by sbayir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstlast(t_list *lst)
 	{
 		if (!lst->next)
 			return (lst);
-		lst = lst -> next;
+		lst = lst->next;
 	}
 	return (lst);
 }

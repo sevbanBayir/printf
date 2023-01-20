@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcakay <mcakay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbayir <sbayir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 18:04:30 by mcakay            #+#    #+#             */
-/*   Updated: 2022/07/01 02:16:25 by mcakay           ###   ########.fr       */
+/*   Created: 2022/12/20 00:28:45 by sbayir            #+#    #+#             */
+/*   Updated: 2022/12/20 00:29:38 by sbayir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
@@ -20,6 +19,6 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-	new -> next = *lst;
+	new->next = *lst;
 	*lst = new;
 }

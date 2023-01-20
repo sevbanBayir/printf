@@ -1,10 +1,23 @@
-#include "ft_printf.h"
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ptr.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbayir <sbayir@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/18 16:55:24 by sbayir            #+#    #+#             */
+/*   Updated: 2023/01/20 13:04:12 by sbayir           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_ptr_len(unsigned int num)
+#include "../include/ft_printf.h"
+
+int	ft_ptr_len(unsigned long num)
 {
 	int	len;
 
+	if (num == 0)
+		return (1);
 	len = 0;
 	while (num != 0)
 	{
@@ -14,7 +27,7 @@ int	ft_ptr_len(unsigned int num)
 	return (len);
 }
 
-void	ft_put_ptr(unsigned int num)
+void	ft_put_ptr(unsigned long num)
 {
 	if (num >= 16)
 	{
@@ -30,7 +43,7 @@ void	ft_put_ptr(unsigned int num)
 	}
 }
 
-int	ft_print_ptr(unsigned long long ptr)
+int	ft_print_ptr(unsigned long ptr)
 {
 	int	print_length;
 

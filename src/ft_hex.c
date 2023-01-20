@@ -1,49 +1,58 @@
-#include "../libft/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_hex.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbayir <sbayir@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/18 16:55:14 by sbayir            #+#    #+#             */
+/*   Updated: 2023/01/18 20:08:17 by sbayir           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_hex_len(unsigned int number)
+#include "../include/ft_printf.h"
+
+int	ft_hex_len(unsigned	int num)
 {
-    int len;
+	int	len;
 
-    len = 0;
-    while (number != 0)
-    {
-        number = number / 16;
-        len++;
-    }
-    if (number = 0)
-        len = 1;
-    return (len);
+	if (num == 0)
+		return (1);
+	len = 0;
+	while (num != 0)
+	{
+		len++;
+		num = num / 16;
+	}
+	return (len);
 }
 
-char    *ft_hex_to_string(unsigned int number, char format)
+void	ft_put_hex(unsigned int num, const char format)
 {
-    int size;
-    char    *hex_string;
-
-    size = ft_hex_len(number);
-    hex_string = malloc(sizeof(char) * size + 1);
-    if (!hex_string)
-        return (0);
-    while (number != 0)
-    {
-        if (format == 'x')
-            hex_string[size - 1] = "0123456789abcdef"[number % 16];
-        if (format == 'X')
-            hex_string[size - 1] = "0123456789ABCDEF"[number % 16];
-        size--;
-        number / 16;
-    }
-    hex_string[size] = '\0';
-    return (hex_string);
+	if (num >= 16)
+	{
+		ft_put_hex(num / 16, format);
+		ft_put_hex(num % 16, format);
+	}
+	else
+	{
+		if (num <= 9)
+			ft_putchar_fd((num + '0'), 1);
+		else
+		{
+			if (format == 'x')
+				ft_putchar_fd((num - 10 + 'a'), 1);
+			if (format == 'X')
+				ft_putchar_fd((num - 10 + 'A'), 1);
+		}
+	}
 }
 
-int ft_print_hex(unsigned int number, char format)
+int	ft_print_hex(unsigned int num, const char format)
 {
-    if (number == 0)
-        return (write(1, '0', 1));
-    else
-    {
-        ft_putstr_fd(ft_hex_to_string(number, format),1);
-    }
-    return (ft_strlen(ft_hex_to_string(number, format)));
+	if (num == 0)
+		return (write(1, "0", 1));
+	else
+		ft_put_hex(num, format);
+	return (ft_hex_len(num));
 }
